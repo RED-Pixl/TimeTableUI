@@ -11,30 +11,35 @@ export default {
       selectorXstr: '50%',
     }
   },
+  mounted() {
+    this.selectorX = Math.round(this.$refs.dashboard.getBoundingClientRect().left);
+    this.selectorXcurrent = this.selectorX
+    this.selectorXstr = this.selectorX.toString() + 'px';
+  },
   methods: {
     selectY(value) {
       console.log(value);
       this.selected = value;
       switch (value) {
         case 'dashboard':
-        this.selectorY = 188;
-        break;
+          this.selectorY = 188;
+          break;
 
         case 'courses':
-        this.selectorY = 292;
-        break;
+          this.selectorY = 292;
+          break;
 
         case 'messages':
-        this.selectorY = 396;
-        break;
+          this.selectorY = 396;
+          break;
 
         case 'calendar':
-        this.selectorY = 500;
-        break;
+          this.selectorY = 500;
+          break;
 
         case 'settings':
-        this.selectorY = 604;
-        break;
+          this.selectorY = 604;
+          break;
       }
       this.animateY();
     },
@@ -44,24 +49,24 @@ export default {
       this.selected = value;
       switch (value) {
         case 'dashboard':
-        this.selectorX = 50;
-        break;
+          this.selectorX = Math.round(this.$refs.dashboard.getBoundingClientRect().left);
+          break;
 
         case 'courses':
-        this.selectorX = 15;
-        break;
+          this.selectorX = Math.round(this.$refs.courses.getBoundingClientRect().left);
+          break;
 
         case 'messages':
-        this.selectorX = 30;
-        break;
+          this.selectorX = Math.round(this.$refs.messages.getBoundingClientRect().left);
+          break;
 
         case 'calendar':
-        this.selectorX = 70;
-        break;
+          this.selectorX = Math.round(this.$refs.calendar.getBoundingClientRect().left);
+          break;
 
         case 'settings':
-        this.selectorX = 85;
-        break;
+          this.selectorX = Math.round(this.$refs.settings.getBoundingClientRect().left);
+          break;
       }
       this.animateX();
     },
@@ -80,13 +85,13 @@ export default {
 
     animateX() {
       if (this.selectorXcurrent > this.selectorX) {
-        this.selectorXcurrent -= 0.5;
+        this.selectorXcurrent -= 1;
       } else if (this.selectorXcurrent < this.selectorX) {
-        this.selectorXcurrent += 0.5;
+        this.selectorXcurrent += 1;
       }
-      this.selectorXstr = this.selectorXcurrent.toString() + '%';
+      this.selectorXstr = this.selectorXcurrent.toString() + 'px';
       if (this.selectorXcurrent != this.selectorX) {
-        setTimeout(this.animateX, 10)
+        setTimeout(this.animateX, 2)
       }
     }
   },
@@ -94,47 +99,47 @@ export default {
 </script>
 
 <template>
-  <div class="selector"></div>
-
   <div class="desktop">
+    <div class="selector"></div>
     <h1 class="logoText poppins-semibold">TimeTable</h1>
     <div class="menue-link">
-    <button class="poppins-medium" @click="selectY('dashboard')">Dashboard</button>
-    <img src="/home.png" @click="selectY('dashboard')">
+      <button class="poppins-medium" @click="selectY('dashboard')">Dashboard</button>
+      <img src="/home.png" @click="selectY('dashboard')">
     </div>
     <div class="menue-link">
-    <button class="poppins-medium" @click="selectY('courses')">Kurse</button>
-    <img src="/school.png" @click="selectY('courses')">
+      <button class="poppins-medium" @click="selectY('courses')">Kurse</button>
+      <img src="/school.png" @click="selectY('courses')">
     </div>
     <div class="menue-link">
-    <button class="poppins-medium" @click="selectY('messages')">Nachrichten</button>
-    <img src="/chat.png" @click="selectY('messages')">
+      <button class="poppins-medium" @click="selectY('messages')">Nachrichten</button>
+      <img src="/chat.png" @click="selectY('messages')">
     </div>
     <div class="menue-link">
-    <button class="poppins-medium" @click="selectY('calendar')">Kalender</button>
-    <img src="/calendar_month.png" @click="selectY('calendar')">
+      <button class="poppins-medium" @click="selectY('calendar')">Kalender</button>
+      <img src="/calendar_month.png" @click="selectY('calendar')">
     </div>
     <div class="menue-link">
-    <button class="poppins-medium" @click="selectY('settings')">Einstellungen</button>
-    <img src="/settings.png" @click="selectY('settings')">
+      <button class="poppins-medium" @click="selectY('settings')">Einstellungen</button>
+      <img src="/settings.png" @click="selectY('settings')">
     </div>
   </div>
 
   <div class="mobile" @focus="selectorYstr = 'calc(100% - 8rem)'">
-    <div class="menue-link">
-    <img src="/school.png" @click="selectX('courses')">
+    <div class="selector"></div>
+    <div class="menue-link" ref="courses">
+      <img src="/school.png" @click="selectX('courses')">
     </div>
-    <div class="menue-link">
-    <img src="/chat.png" @click="selectX('messages')">
+    <div class="menue-link" ref="messages">
+      <img src="/chat.png" @click="selectX('messages')">
     </div>
-    <div class="menue-link">
-    <img src="/home.png" @click="selectX('dashboard')">
+    <div class="menue-link" ref="dashboard">
+      <img src="/home.png" @click="selectX('dashboard')">
     </div>
-    <div class="menue-link">
-    <img src="/calendar_month.png" @click="selectX('calendar')">
+    <div class="menue-link" ref="calendar">
+      <img src="/calendar_month.png" @click="selectX('calendar')">
     </div>
-    <div class="menue-link">
-    <img src="/settings.png" @click="selectX('settings')">
+    <div class="menue-link" ref="settings">
+      <img src="/settings.png" @click="selectX('settings')">
     </div>
   </div>
 </template>
@@ -147,9 +152,10 @@ export default {
   height: 100%;
   top: 0;
   left: 0;
+  border-radius: 0rem 3rem 3rem 0rem;
 }
 
-.desktop > h1 {
+.desktop>h1 {
   margin-block: 4rem;
   margin-inline: 2rem;
   text-align: left;
@@ -167,10 +173,9 @@ export default {
   margin-inline: 2rem;
   display: flex;
   justify-content: space-between;
-  z-index: 10000;
 }
 
-.menue-link > button {
+.menue-link>button {
   text-align: left;
   font-family: 'Poppins';
   color: #0d0d0d;
@@ -180,14 +185,15 @@ export default {
   transition: ease-in-out 0.2s;
 }
 
-.menue-link > img {
+.menue-link>img {
   width: 2.5rem;
   height: 2.5rem;
   position: relative;
   transition: ease-in-out 0.2s;
 }
 
-.desktop > h1:hover, button:hover {
+.desktop>h1:hover,
+button:hover {
   scale: 1.2;
   translate: 2rem;
 }
@@ -198,7 +204,6 @@ export default {
   height: 4rem;
   position: fixed;
   border-radius: 100%;
-  z-index: 999;
   box-shadow: #ff8e4c1a 0px 2px 5px 0px, #ff8d4c17 0px 9px 9px 0px, #ff8d4c0c 0px 20px 12px 0px, #ff8d4c02 0px 36px 14px 0px;
 }
 
@@ -213,15 +218,15 @@ export default {
     width: 8rem;
   }
 
-  .menue-link > button {
+  .menue-link>button {
     display: none;
   }
 
-  .desktop > h1 {
+  .desktop>h1 {
     color: transparent;
   }
 
-  .menue-link > img {
+  .menue-link>img {
     margin-inline: auto;
   }
 
@@ -258,14 +263,16 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    border-radius: 3rem 3rem 0rem 0rem;
   }
-  
-  .mobile > div {
+
+  .mobile>div {
     margin-inline: 0rem;
   }
 
   .menue-link {
     transition: ease-in-out 0.2s;
+    margin-bottom: 6rem;
   }
 
   .menue-link:hover {
@@ -274,7 +281,7 @@ export default {
 
   .selector {
     bottom: 7rem;
-    left: calc(v-bind(selectorXstr) - 2rem);
+    left: calc((v-bind(selectorXstr) + 1.25rem) - 2rem);
   }
 }
 </style>
