@@ -6,6 +6,7 @@ export default {
             school: '',
             username: '',
             password: '',
+            succesfull: true,
         };
     },
     mounted() {
@@ -14,9 +15,11 @@ export default {
     methods: {
         login() {
             // Perform login logic here
-            console.log('Hi')
-            console.log('Login successful! + School: ' + this.school + ' + Username: ' + this.username + ' + Password: ' + this.password);
-            this.$emit('login');
+            if (this.school==='Viscardi Gymnasium FFB' && this.username==='simon' && this.password==='1234') {
+                this.$emit('login');
+            } else {
+                this.succesfull = false;
+            }
         },
     },
 };
@@ -25,14 +28,15 @@ export default {
 <template>
     <form>
         <label>Schule:</label>
-        <select v-model="school">
+        <select v-model="school" @click="succesfull=true">
             <option v-for="option in schools">{{option}}</option>
         </select>
         <label>Benutzername:</label>
-        <input type="text" v-model="username">
+        <input type="text" v-model="username" @click="succesfull=true">
         <label>Password:</label>
-        <input type="password" v-model="password">
-        <button @click="login">Login</button>
+        <input type="password" v-model="password" @click="succesfull=true">
+        <label class="warning" v-if="!succesfull">Falsche Benutzername oder Passwort</label>
+        <div @click="login">Login</div>
     </form>
 </template>
 
@@ -53,7 +57,7 @@ export default {
         background-color: #E6E6E6;
     }
 
-    input, button, select, option {
+    input, div, select, option {
         margin: 0.5rem;
         font-family: 'Poppins';
     }
@@ -83,13 +87,20 @@ export default {
         outline-offset: -0.15rem;
     }
 
-    button {
+    div {
         margin-top:1.5rem;
         padding: 0.5rem;
         border-radius: 1rem;
         border: none;
         background-color: #ff8d4c;
+        align-items: center;
+        text-align: center;
         cursor: pointer;
         width: 10rem
+    }
+
+    .warning {
+        color: #ff0f0f;
+        font-size: 0.75rem;
     }
 </style>
