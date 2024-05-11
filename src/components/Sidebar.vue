@@ -80,13 +80,13 @@ export default {
 
     animateX() {
       if (this.selectorXcurrent > this.selectorX) {
-        this.selectorXcurrent -= 1;
+        this.selectorXcurrent -= 0.5;
       } else if (this.selectorXcurrent < this.selectorX) {
-        this.selectorXcurrent += 1;
+        this.selectorXcurrent += 0.5;
       }
       this.selectorXstr = this.selectorXcurrent.toString() + '%';
       if (this.selectorXcurrent != this.selectorX) {
-        setTimeout(this.animateX, 15)
+        setTimeout(this.animateX, 10)
       }
     }
   },
@@ -94,6 +94,8 @@ export default {
 </script>
 
 <template>
+  <div class="selector"></div>
+
   <div class="desktop">
     <h1 class="logoText poppins-semibold">TimeTable</h1>
     <div class="menue-link">
@@ -135,8 +137,6 @@ export default {
     <img src="/settings.png" @click="selectX('settings')">
     </div>
   </div>
-
-  <div class="selector"></div>
 </template>
 
 <style scoped>
@@ -167,6 +167,7 @@ export default {
   margin-inline: 2rem;
   display: flex;
   justify-content: space-between;
+  z-index: 10000;
 }
 
 .menue-link > button {
@@ -183,7 +184,6 @@ export default {
   width: 2.5rem;
   height: 2.5rem;
   position: relative;
-  z-index: 1;
   transition: ease-in-out 0.2s;
 }
 
@@ -198,9 +198,14 @@ export default {
   height: 4rem;
   position: fixed;
   border-radius: 100%;
+  z-index: 999;
   box-shadow: #ff8e4c1a 0px 2px 5px 0px, #ff8d4c17 0px 9px 9px 0px, #ff8d4c0c 0px 20px 12px 0px, #ff8d4c02 0px 36px 14px 0px;
-  top: v-bind(selectorYstr);
-  left: calc(v-bind(selectorXstr) - 2rem);
+}
+
+@media only screen and (min-width: 1201px) {
+  .selector {
+    left: 21rem;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -219,11 +224,19 @@ export default {
   .menue-link > img {
     margin-inline: auto;
   }
+
+  .selector {
+    left: 5rem;
+  }
 }
 
 @media only screen and (min-width: 601px) {
   .mobile {
     display: none;
+  }
+
+  .selector {
+    top: v-bind(selectorYstr);
   }
 }
 
@@ -257,6 +270,11 @@ export default {
 
   .menue-link:hover {
     scale: 1.2;
+  }
+
+  .selector {
+    bottom: 7rem;
+    left: calc(v-bind(selectorXstr) - 2rem);
   }
 }
 </style>
