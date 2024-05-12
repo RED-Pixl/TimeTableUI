@@ -54,7 +54,8 @@ export default {
         border-radius: 3rem;
         font-family: 'Poppins';
         color: #0d0d0d;
-        background-color: #E6E6E6;
+        background-color: #cccccc;
+        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
     }
 
     input, div, select, option {
@@ -67,6 +68,7 @@ export default {
         padding: 0.5rem;
         border-radius: 1rem;
         border: none;
+        background-color: #e6e6e6;
     }
 
     select:focus {
@@ -79,6 +81,7 @@ export default {
         padding: 0.5rem;
         border-radius: 1rem;
         border: none;
+        background-color: #e6e6e6;
     }
 
     input:focus {

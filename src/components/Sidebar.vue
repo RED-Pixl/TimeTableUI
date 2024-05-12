@@ -153,6 +153,7 @@ export default {
   top: 0;
   left: 0;
   border-radius: 0rem 3rem 3rem 0rem;
+  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
 }
 
 .desktop>h1 {
@@ -264,6 +265,7 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     border-radius: 3rem 3rem 0rem 0rem;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
   }
 
   .mobile>div {
@@ -271,12 +273,7 @@ button:hover {
   }
 
   .menue-link {
-    transition: ease-in-out 0.2s;
     margin-bottom: 6rem;
-  }
-
-  .menue-link:hover {
-    scale: 1.2;
   }
 
   .selector {
