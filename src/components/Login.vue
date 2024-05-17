@@ -26,6 +26,7 @@ export default {
 </script>
 
 <template>
+    <h1 class="logoText poppins-semibold">TimeTable</h1>
     <form>
         <label>Schule:</label>
         <select v-model="school" @click="succesfull=true">
@@ -41,6 +42,18 @@ export default {
 </template>
 
 <style scoped>
+    h1 {
+        margin-block: 4rem;
+        width: 100%;
+        text-align: center;
+        display: block;
+        font-family: 'Poppins';
+        color: #0d0d0d;
+        background-color: transparent;
+        border: none;
+        font-size: 3rem;
+    }
+
     form {
         position: fixed;
         top: 50%;
@@ -55,7 +68,7 @@ export default {
         font-family: 'Poppins';
         color: #0d0d0d;
         background-color: #cccccc;
-        box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+        box-shadow: #0000001a 0px 2px 5px 0px, #00000017 0px 9px 9px 0px, #0000000c 0px 20px 12px 0px, #00000002 0px 36px 14px 0px;
     }
 
     input, div, select, option {
@@ -99,7 +112,8 @@ export default {
         align-items: center;
         text-align: center;
         cursor: pointer;
-        width: 10rem
+        width: 10rem;
+        box-shadow: #ff8e4c1a 0px 2px 5px 0px, #ff8d4c17 0px 9px 9px 0px, #ff8d4c0c 0px 20px 12px 0px, #ff8d4c02 0px 36px 14px 0px;
     }
 
     .warning {

@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     selectY(value) {
-      console.log(value);
+      this.$emit(value);
       this.selected = value;
       switch (value) {
         case 'dashboard':
@@ -45,7 +45,7 @@ export default {
     },
 
     selectX(value) {
-      console.log(value);
+      this.$emit(value);
       this.selected = value;
       switch (value) {
         case 'dashboard':
@@ -124,6 +124,11 @@ export default {
     </div>
   </div>
 
+  <div class="profile">
+    <img src="/profile.png" alt="">
+    <p class="poppins-medium">Simon<button @click="this.$emit('logout')" class="poppins-medium">Logout</button></p>
+  </div>
+
   <div class="mobile" @focus="selectorYstr = 'calc(100% - 8rem)'">
     <div class="selector"></div>
     <div class="menue-link" ref="courses">
@@ -193,8 +198,12 @@ export default {
   transition: ease-in-out 0.2s;
 }
 
-.desktop>h1:hover,
-button:hover {
+.desktop>h1:hover {
+  scale: 1.2;
+  translate: 2rem;
+}
+
+.menue-link>button:hover {
   scale: 1.2;
   translate: 2rem;
 }
@@ -205,6 +214,38 @@ button:hover {
   height: 4rem;
   position: fixed;
   border-radius: 100%;
+  box-shadow: #ff8e4c1a 0px 2px 5px 0px, #ff8d4c17 0px 9px 9px 0px, #ff8d4c0c 0px 20px 12px 0px, #ff8d4c02 0px 36px 14px 0px;
+}
+
+.profile {
+  position: fixed;
+  margin-inline: 2rem;
+  bottom: 2rem;
+  font-size: 1rem;
+  display: flex;
+}
+
+.profile>img{
+  width: 6rem;
+  height: 6rem;
+  border-radius: 3rem;
+  margin-right: 2rem;
+  box-shadow: #0000001a 0px 2px 5px 0px, #00000017 0px 9px 9px 0px, #0000000c 0px 20px 12px 0px, #00000002 0px 36px 14px 0px;
+}
+
+.profile>p {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile>p>button {
+  background-color: #ff8d4c;
+  border: none;
+  border-radius: 3rem;
+  width: 6rem;
+  height: 2rem;
+  font-size: 1rem;
   box-shadow: #ff8e4c1a 0px 2px 5px 0px, #ff8d4c17 0px 9px 9px 0px, #ff8d4c0c 0px 20px 12px 0px, #ff8d4c02 0px 36px 14px 0px;
 }
 
@@ -234,6 +275,27 @@ button:hover {
   .selector {
     left: 5rem;
   }
+
+  .profile {
+    flex-direction: column;
+    margin-inline: 1.5rem;
+  }
+
+  .profile>img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .profile>p {
+    text-align: center;
+    width: 5rem;
+    margin-top: 0.5rem;
+  }
+
+  .profile>p>button {
+    width: 5rem;
+    margin-top: 1.5rem;
+  }
 }
 
 @media only screen and (min-width: 601px) {
@@ -247,8 +309,11 @@ button:hover {
 }
 
 @media only screen and (max-width: 600px) {
-
   .desktop {
+    display: none;
+  }
+
+  .profile {
     display: none;
   }
 
