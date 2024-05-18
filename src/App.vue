@@ -53,6 +53,7 @@ export default {
 @media only screen and (max-width: 600px) {
   .content {
     margin-left: 0;
+    padding-inline:2rem;
   }
 }
 </style>

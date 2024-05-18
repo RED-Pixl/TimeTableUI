@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-    <h1 class="poppins-semibold">Nachrichten</h1>
+    <h1 class="poppins-medium">Nachrichten</h1>
 </template>
 
 <style scoped>

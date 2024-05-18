@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-    <h1 class="poppins-semibold">Einstellungen</h1>
+    <h1 class="poppins-medium">Einstellungen</h1>
 </template>
 
 <style scoped>

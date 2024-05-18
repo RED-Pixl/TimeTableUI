@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-    <h1 class="poppins-semibold">Kalender</h1>
+    <h1 class="poppins-medium">Kalender</h1>
 </template>
 
 <style scoped>
