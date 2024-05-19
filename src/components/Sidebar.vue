@@ -321,7 +321,7 @@ export default {
     position: fixed;
     background-color: #cccccc;
     width: 80%;
-    height: 10rem;
+    height: 8rem;
     bottom: 0;
     left: 0;
     padding-inline: 10%;
@@ -342,7 +342,7 @@ export default {
   }
 
   .selector {
-    bottom: 7rem;
+    bottom: 5rem;
     left: calc((v-bind(selectorXstr) + 1.25rem) - 2rem);
   }
 }
