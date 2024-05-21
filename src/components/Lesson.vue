@@ -23,6 +23,9 @@ export default {
             } else if (this.state === 'bb') {
                 this.rounded = '1rem 1rem 1.5rem 1.5rem';
                 this.marginb = '1rem';
+            } else if (this.state === 'ib') {
+                this.rounded = '1.5rem 1.5rem 1.5rem 1.5rem';
+                this.marginb = '1rem';
             } else {
                 this.rounded = '1rem 1rem 1rem 1rem';
             }
