@@ -100,7 +100,7 @@ export default {
 
 <template>
   <div class="desktop">
-    <div class="selector"></div>
+    <div class="selector accent-glow"></div>
     <h1 class="logoText poppins-semibold">TimeTable</h1>
     <div class="menue-link">
       <button class="poppins-medium" @click="selectY('dashboard')">Dashboard</button>
@@ -126,11 +126,11 @@ export default {
 
   <div class="profile">
     <img src="/profile.png" alt="">
-    <p class="poppins-medium">Simon<button @click="this.$emit('logout')" class="poppins-medium">Logout</button></p>
+    <p class="poppins-medium">Simon<button @click="this.$emit('logout')" class="poppins-regular btn-primary accent-glow">Logout</button></p>
   </div>
 
   <div class="mobile" @focus="selectorYstr = 'calc(100% - 8rem)'">
-    <div class="selector"></div>
+    <div class="selector accent-glow"></div>
     <div class="menue-link" ref="courses">
       <img src="/school.png" @click="selectX('courses')">
     </div>
@@ -152,7 +152,8 @@ export default {
 <style scoped>
 .desktop {
   position: fixed;
-  background-color: #cccccc;
+  background-color: var(--bg-color-secondary);
+  color: var(--text-color);
   width: 24rem;
   height: 100%;
   top: 0;
@@ -166,8 +167,6 @@ export default {
   margin-inline: 2rem;
   text-align: left;
   display: block;
-  font-family: 'Poppins';
-  color: #0d0d0d;
   background-color: transparent;
   border: none;
   transition: ease-in-out 0.2s;
@@ -184,7 +183,6 @@ export default {
 .menue-link>button {
   text-align: left;
   font-family: 'Poppins';
-  color: #0d0d0d;
   background-color: transparent;
   border: none;
   font-size: 1.5rem;
@@ -209,12 +207,11 @@ export default {
 }
 
 .selector {
-  background-color: #ff8d4c;
+  background-color: var(--accent-color);
   width: 4rem;
   height: 4rem;
   position: fixed;
   border-radius: 100%;
-  box-shadow: #ff8e4c1a 0px 2px 5px 0px, #ff8d4c17 0px 9px 9px 0px, #ff8d4c0c 0px 20px 12px 0px, #ff8d4c02 0px 36px 14px 0px;
 }
 
 .profile {
@@ -240,13 +237,7 @@ export default {
 }
 
 .profile>p>button {
-  background-color: #ff8d4c;
-  border: none;
-  border-radius: 3rem;
   width: 6rem;
-  height: 2rem;
-  font-size: 1rem;
-  box-shadow: #ff8e4c1a 0px 2px 5px 0px, #ff8d4c17 0px 9px 9px 0px, #ff8d4c0c 0px 20px 12px 0px, #ff8d4c02 0px 36px 14px 0px;
 }
 
 @media only screen and (min-width: 1201px) {
@@ -319,7 +310,7 @@ export default {
 
   .mobile {
     position: fixed;
-    background-color: #cccccc;
+    background-color: var(--bg-color-secondary);
     width: 80%;
     height: 8rem;
     bottom: 0;

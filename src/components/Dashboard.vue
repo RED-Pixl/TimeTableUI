@@ -31,8 +31,6 @@ export default {
 h1 {
     text-align: left;
     display: block;
-    font-family: 'Poppins';
-    color: #0d0d0d;
     font-size: 3rem;
 }
 

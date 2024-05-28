@@ -3,6 +3,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --bg-color-primary: #e6e6e6;
+  --bg-color-secondary: #cccccc;
+  --accent-color: #ff8d4c;
+  --text-color: #0d0d0d;
+  --text-color-light: #737373;
+  --error: #ff0f0f;
 }
 
 body {
@@ -120,4 +126,20 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 900;
   font-style: italic;
+}
+
+.accent-glow {
+  box-shadow: #ff8e4c1a 0px 2px 5px 0px, #ff8d4c17 0px 9px 9px 0px, #ff8d4c0c 0px 20px 12px 0px, #ff8d4c02 0px 36px 14px 0px;
+}
+
+.btn-primary {
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-block: 0.5rem;
+  border-radius: 1rem;
+  border: none;
+  background-color: #ff8d4c;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
 }

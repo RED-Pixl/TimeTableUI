@@ -1,18 +1,25 @@
 <script setup>
+import Course from './Course.vue';
 </script>
 
 <script>
 export default {
-    data() {
-        return {
-
-        }
+    components: {
+        Course
     }
 }
 </script>
 
 <template>
     <h1 class="poppins-medium">Kurse</h1>
+    <div>
+      <Course></Course>
+      <Course></Course>
+      <Course></Course>
+      <Course></Course>
+      <Course></Course>
+      <Course></Course>
+    </div>
 </template>
 
 <style scoped>
@@ -28,5 +35,11 @@ h1 {
   h1 {
     text-align: center;
   }
+}
+
+div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
 }
 </style>

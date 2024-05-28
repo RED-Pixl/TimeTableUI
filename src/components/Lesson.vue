@@ -44,7 +44,7 @@ export default {
 <style scoped>
 div {
     width: 100%;
-    background-color: #cccccc;
+    background-color: var(--bg-color-secondary);
     display:flex;
     flex-direction: column;
     border-radius: v-bind(rounded);
@@ -64,6 +64,6 @@ p {
     margin-top:0rem;
     margin-left:1rem;
     margin-bottom:0.5rem;
-    color: #737373;
+    color: var(--text-color-light);
 }
 </style>
