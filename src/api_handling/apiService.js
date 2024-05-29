@@ -40,10 +40,10 @@ return response;
         } catch (refreshError) {
         // Handle refresh token failure: redirect to login page
         console.error('Token refresh failed:', refreshError);
-        //clear tokens
+        // Clear tokens
         await store.dispatch('saveTokens', { jwt: null, refreshToken: null });
         
-        // code for redirecting user
+        // Code for redirecting user
         }
     }
     return Promise.reject(error);
@@ -51,7 +51,7 @@ return response;
 
 export default {
     // TODO: Add all endpoints with handling here
-    // all the data passed through should be JS objects
+    // All the data passed through should be JS objects
     // The API will reject anything else
     // Specifics in naming are found in the documentation
     getResource() {
@@ -65,5 +65,8 @@ export default {
     },
     login(credentials) {
         return apiClient.post('/login', credentials);
+    },
+    schools(){
+        return apiClient.get('/schools');
     }
 };

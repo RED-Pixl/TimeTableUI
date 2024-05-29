@@ -1,4 +1,7 @@
 <script>
+import apiService from '../api_handler/apiService';
+import { mapActions } from 'vuex';
+
 export default {
     data() {
         return {
@@ -11,16 +14,32 @@ export default {
     },
     mounted() {
         //Get all registered schools from the api and save in schools
+        apiService.schools()
     },
     methods: {
-        login() {
-            // Perform login logic here
-            if (this.school==='Viscardi Gymnasium FFB' && this.username==='simon' && this.password==='1234') {
-                this.$emit('login');
-            } else {
-                this.succesfull = false;
+        ...mapActions(['saveTokens']),
+        async login(){
+            try {
+                const response = await apiService.login({ username: this.username, password: this.password });
+
+                if (response.status === 200) {
+                    const { jwt, refreshToken } = response.data.tokens;
+
+                    if (jwt && refreshToken) {
+                        await this.saveTokens({ jwt, refreshToken });
+                        // Redirect user to homepage
+                    } else {
+                        throw new Error('Invalid response: Tokens missing or invalid');
+                    }
+                } else {
+                    throw new Error(`Unexpected response status: ${response.status}`);
+                }
+            } catch (error) {
+                this.error = 'Invalid username or password';
+                console.error('Login failed:', error);
+                // Redirect user back to login?
             }
-        },
+        }
     },
 };
 </script>
