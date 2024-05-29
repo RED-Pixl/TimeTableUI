@@ -1,7 +1,8 @@
 import axios from 'axios';
+import store from '../store/store.js'
 
 const apiClient = axios.create({
-  baseURL: 'domain goes here',
+  baseURL: 'http://127.0.0.1:80',
   headers: {
     'Content-Type': 'application/json',
   }
@@ -18,8 +19,10 @@ apiClient.interceptors.request.use(config => {
 });
 
 apiClient.interceptors.response.use(response => {
+    console.log(response);
 return response;
 }, async error => {
+    console.log(error);
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
         originalRequest._retry = true;
@@ -54,19 +57,10 @@ export default {
     // All the data passed through should be JS objects
     // The API will reject anything else
     // Specifics in naming are found in the documentation
-    getResource() {
-        return apiClient.get('/endpoints');
-    },
-    postResource(data) {
-        return apiClient.post('/endpoints', data);
-    },
-    putResource(data) {
-        return apiClient.put('/endpoints', data);
-    },
     login(credentials) {
         return apiClient.post('/login', credentials);
     },
     schools(){
-        return apiClient.get('/schools');
+        return apiClient.get('/api/schools');
     }
 };

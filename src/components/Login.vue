@@ -1,11 +1,11 @@
 <script>
-import apiService from '../api_handler/apiService';
+import apiService from '../api_handling/apiService';
 import { mapActions } from 'vuex';
 
 export default {
     data() {
         return {
-            schools: ['Viscardi Gymnasium FFB', 'Graf-Rasso Gymnasium FFB'],
+            schools: [],
             school: '',
             username: '',
             password: '',
@@ -13,11 +13,22 @@ export default {
         };
     },
     mounted() {
+        let schools = []
         //Get all registered schools from the api and save in schools
-        apiService.schools()
+        schools = apiService.schools().then(res =>
+            res.forEach(school => {
+                this.schools.push(school.title)
+            })
+        )
+        .catch(error => {
+                console.error('Error fetching schools:', error);
+        });
     },
     methods: {
         ...mapActions(['saveTokens']),
+        goToSidebar() {
+            this.$router.push({ name: 'About' });
+        },
         async login(){
             try {
                 const response = await apiService.login({ username: this.username, password: this.password });
@@ -28,6 +39,7 @@ export default {
                     if (jwt && refreshToken) {
                         await this.saveTokens({ jwt, refreshToken });
                         // Redirect user to homepage
+                        this.goToSidebar();
                     } else {
                         throw new Error('Invalid response: Tokens missing or invalid');
                     }
